@@ -15,8 +15,54 @@ class EventCard extends StatelessWidget {
   }
 
 class _EventCardState extends State<EventCard> {
+  List<Eventis> events = [];
+  bool loading = true;
 
+  @override
+  void initState() {
+    super.initState();
+    _loadEvents();
+  }
 
+  void _loadEvents([bool showSpinner = false]) {
+    if (showSpinner) {
+      setState(() {
+        loading = true;
+      });
+    }
+
+    widget.api.getEvents().then((data) {
+      setState(() {
+        events = data;
+        loading = false;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: true,
+      ),
+      body: loading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : EventListing(
+              events: events,
+              //onAdd: _addContact,
+              //onDelete: _deleteContact,
+            ),
+    );
+  }
+}
+
+class EventListing extends StatelessWidget {
+  final List<Eventis> events;
+ 
+  EventListing({this.events,});
 
   @override
   Widget build(BuildContext context) {
@@ -139,5 +185,5 @@ class _EventCardState extends State<EventCard> {
         ),
       ),
     );
-  
+  }
 }
