@@ -6,13 +6,11 @@ import 'package:expandable_text/expandable_text.dart';
 class EventText extends StatefulWidget {
 
 
-  List<String> eventDetails=['Desc', 'date', 'time', 'location'];
+  String desc= 'Event Desc';
+  DateTime eventDatetime = DateTime.now();
 
 
-  EventText({ required List<String> eventDetail }){
-
-    this.eventDetails= eventDetail;
-  }
+  EventText({ required this.desc, required this.eventDatetime});
 
 
   @override
@@ -29,7 +27,7 @@ class _EventTextState extends State<EventText> {
           Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
             child: ExpandableText(
-              '${widget.eventDetails.elementAt(1)}',
+              '${widget.desc}',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 16
@@ -42,21 +40,14 @@ class _EventTextState extends State<EventText> {
             height: 8,
           ),
           Text(
-            '${widget.eventDetails.elementAt(2)}',
+            '${widget.eventDatetime.day}',
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 16
             ),
           ),
           Text(
-            '${widget.eventDetails.elementAt(3)}',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 16
-            ),
-          ),
-          Text(
-            '${widget.eventDetails.elementAt(4)}',
+            '${widget.eventDatetime.hour}',
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 16
