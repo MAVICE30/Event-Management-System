@@ -70,6 +70,7 @@ class HomePage extends StatelessWidget {
     ];
 
     return Scaffold(
+      appBar: AppBar(title: Text('EMS BPHC') ,),
       drawer: CustomDrawer(),
       backgroundColor: Colors.green[50],
       body: ListView(children: cards,) 
