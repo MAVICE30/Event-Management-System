@@ -8,4 +8,4 @@ The app aims to create a platform for the clubs, associations, departments and s
 
 1. Flutter
 2. MongoDB
-3. js
+3. Node.js
